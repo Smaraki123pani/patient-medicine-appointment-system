@@ -1,0 +1,116 @@
+<head>
+    <title>Update Medicine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+             background-color: #F0F4C3;
+            color: #343a40;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .back-to-home {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px #999;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-to-home:hover {
+            background-color: #0056b3;
+        }
+        .back-to-home:active {
+            background-color: #0056b3;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+<h1>Update Medicine</h1>
+<form th:action="@{/saveUpdate}" th:object="${medicine}" method="post">
+    <input type="hidden" name="_method" value="put"/>
+    <input type="hidden" th:field="*{patientUser.id}" />
+    <input type="hidden" th:field="*{Dosage}" />
+
+
+    <label for="serialNO">Serial No</label>
+    <input type="text" id="serialNO" name="serialNo" th:value="${medicine.serialNo}" readonly />
+
+
+    <label for="medicineId">Medicine Id</label>
+    <input type="text" id="medicineId" name="medicineId" th:value="${medicine.medicineId}" readonly />
+
+    <div>
+        <label for="medicineName">Medicine Name</label>
+        <input type="text"  id="medicineName" name="medicineName" th:value="${medicine.medicineName}" readonly />
+    </div>
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" th:value="${medicine.quantity}" required />
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+<a href="/home" class="back-to-home">Back to Home</a>
+</body>
+</html>

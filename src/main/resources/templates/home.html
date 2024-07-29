@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #F0F4C3;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add transparency to make the background image visible */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        p {
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 12px 24px;
+            background-color: #2980b9;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #1c5986;
+            transform: scale(1.05);
+        }
+
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .logout:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Welcome to the AR HOSPITAL ZONE</h2>
+    <br><br>
+    <nav>
+        <ul>
+            <li><a href="/displayDoctors">View Doctors</a></li>
+            <li><a href="/displayAppointments">View Appointments</a></li>
+            <li><a href="/displayMedicine">View Medicines</a></li>
+            <li><a href="/addMedicine">Add Medicines</a></li>
+        </ul>
+    </nav>
+    <br><br>
+    <a href="/logout" class="logout">Logout</a>
+</div>
+</body>
+</html>

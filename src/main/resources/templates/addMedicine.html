@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Medicine</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #F0F4C3;;
+            color: #2c3e50;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2980b9;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        p {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        div {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none; /* Remove default link styling */
+            text-align: center; /* Center the text */
+        }
+        button:hover {
+            background-color: #1c5986;
+            transform: scale(1.05);
+        }
+        .back-to-home {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #2980b9;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center; /* Center the text */
+        }
+        .back-to-home:hover {
+            background-color: #1c5986;
+        }
+    </style>
+</head>
+<body>
+<h1>Add Medicine</h1>
+<p>Note: For this medicines registration for your convenience, you can access it anywhere. But, you have to add these medicines only prescribed by our authorized doctors. Once you add the medicine, for safety purposes <b>"you can update only the quantity. Other options are strictly restricted."</b></p>
+<form th:action="@{/save}" method="post" th:object="${medicine}" >
+    <input type="hidden" th:value="${patientUser.id}" name="patientUserId"/>
+    <div>
+        <label for="medicineId">Medicine ID</label>
+        <input type="text" id="medicineId" name="medicineId" required placeholder="Enter Medicine ID" />
+    </div>
+    <div>
+        <label for="medicineName">Medicine Name</label>
+        <input type="text" id="medicineName" name="medicineName" required placeholder="Enter Medicine Name" />
+    </div>
+    <div>
+        <label for="Dosage">Dosage</label>
+        <input type="text" id="Dosage" name="Dosage" required placeholder="Enter Dosage" />
+    </div>
+    <div>
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" required placeholder="Enter Quantity" />
+    </div>
+    <div>
+        <button type="submit">Add Medicine</button>
+    </div>
+</form>
+<a href="/home" class="back-to-home">Back to Home</a>
+</body>
+</html>

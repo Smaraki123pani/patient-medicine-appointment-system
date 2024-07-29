@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Medicines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F4C3;
+            color: #343a40;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .edit-button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px 2px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px #999;
+        }
+        .edit-button:hover {
+            background-color: #218838;
+        }
+        .edit-button:active {
+            background-color: #218838;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+        .back-to-home {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px #999;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-to-home:hover {
+            background-color: #0056b3;
+        }
+        .back-to-home:active {
+            background-color: #0056b3;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+<h1>Medicine List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Serial No</th>
+        <th>Medicine Name</th>
+        <th>Dosage</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="medicine : ${medicine}">
+        <td th:text="${medicine.serialNo}"></td>
+        <td th:text="${medicine.medicineName}"></td>
+        <td th:text="${medicine.dosage}"></td>
+        <td th:text="${medicine.quantity}"></td>
+        <td>
+            <a th:href="@{/medicineUpdateById(serialNo=${medicine.serialNo})}" class="edit-button">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/home" class="back-to-home">Back to Home</a>
+</body>
+</html>
